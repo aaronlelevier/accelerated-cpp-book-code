@@ -1,4 +1,3 @@
-// hello workd
 #include <iostream>
 
 int main()
