@@ -3,25 +3,24 @@
 
 int main()
 {
-  std::string prefix = "please enter name: ";
-  std::string helloPrefix = "Hello, ";
-
-  std::cout << prefix;
-
+  std::cout << "please enter name: ";
   std::string name;
   std::cin >> name;
+  std::string greeting = "Hello, " + name;
+
+  // build the second and fourth lines of the output
+  const std::string spaces(greeting.size(), ' ');
+  const std::string second = "* " + spaces + " *";
+  // build the first and fifth lines of the output
+  const std::string first(second.size(), '*');
+
+  // write all
   std::cout << std::endl;
-
-  int width = name.length() + helloPrefix.length() + 4;
-
-  std::string widthStars = std::string(width, '*');
-  std::string widthStarsWhitespace = std::string(width-4, ' ');
-
-  std::cout << widthStars << std::endl;
-  std::cout << "* " << widthStarsWhitespace << " * " << std::endl;
-  std::cout << "* " << helloPrefix << name << " *" << std::endl;
-  std::cout << "* " << widthStarsWhitespace << " * " << std::endl;
-  std::cout << widthStars << std::endl;
+  std::cout << first << std::endl;
+  std::cout << second << std::endl;
+  std::cout << "* " << greeting << " *" << std::endl;
+  std::cout << second << std::endl;
+  std::cout << first << std::endl;
 
   return 0;
 }
