@@ -6,7 +6,7 @@
           "type": "shell",
           "command": "g++",
           "args": [
-            "-o", "a.out", "${file}"
+            "-o", "${fileDirname}/${fileBasenameNoExtension}.out", "${file}"
           ],
           "group": {
               "kind": "build",
