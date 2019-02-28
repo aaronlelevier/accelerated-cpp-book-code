@@ -11,11 +11,12 @@ int main()
   // name and greeting
   string name = "Bob";
   const string greeting = "Hello, " + name + "!";
-  const int pad = 1;
+  const int colPad = 3;
+  const int rowPad = 0;
 
   // rows and cols
-  const int rows = pad * 2 + 3;
-  const string::size_type cols = greeting.size() + pad * 2 + 2;
+  const int rows = rowPad * 2 + 3;
+  const string::size_type cols = greeting.size() + colPad * 2 + 2;
 
   // write rows rows of output
   // invariant: we have written r rows so far
@@ -26,7 +27,7 @@ int main()
     while (c != cols)
     {
       // is it time to write the greeting?
-      if (r == pad + 1 && c == pad + 1)
+      if (r == rowPad + 1 && c == colPad + 1)
       {
         cout << greeting;
         c += greeting.size();
