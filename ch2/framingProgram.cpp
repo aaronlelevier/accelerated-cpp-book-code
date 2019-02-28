@@ -11,8 +11,14 @@ int main()
   // name and greeting
   string name = "Bob";
   const string greeting = "Hello, " + name + "!";
-  const int colPad = 3;
-  const int rowPad = 0;
+
+
+  int pad;
+  cout << "How much padding do you want?" << endl;
+  cin >> pad;
+
+  const int colPad = pad;
+  const int rowPad = pad;
 
   // rows and cols
   const int rows = rowPad * 2 + 3;
