@@ -54,6 +54,10 @@ type is `char`
 
 enclosed in single quotes
 
-### NEXT
+**boolean operators**
 
-1.3 - Details
+`||` and `&&` and left associative.
+
+In the case of `||` if the first value is `true`, the next value isn't evaluated and the expression returns true
+
+Same for `&&`, but if the first value is `false`, then because all values must evaluate to `true`, `false` is returned without evaluating the next value
