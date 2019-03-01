@@ -61,3 +61,12 @@ enclosed in single quotes
 In the case of `||` if the first value is `true`, the next value isn't evaluated and the expression returns true
 
 Same for `&&`, but if the first value is `false`, then because all values must evaluate to `true`, `false` is returned without evaluating the next value
+
+**asymmetric range**
+
+a range beginning with `0`
+
+**symmetric range**
+
+a range beginning with `1`
+
