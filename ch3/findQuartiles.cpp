@@ -4,47 +4,54 @@
 #include <valarray> // std::valarray, std::slice
 #include <assert.h>
 
-std::valarray<int> getArray(int n)
+std::valarray<int> getArray(int start, int end)
 {
-  std::valarray<int> arr(n);
-  for (int i = 0; i < n; ++i)
+  std::valarray<int> arr(end);
+  for (int i = start; i < start+end; ++i)
     arr[i] = i;
   return arr;
 }
 
 int getMid(std::valarray<int> arr) {
+  int first = arr[0];
   int size = arr.size();
-  int rawMid = size / 2;
-  std::size_t mid = size % 2 == 0 ? arr[rawMid - 1] : arr[rawMid];
+  int last = arr[size-1];
+  int rawMid = last / 2;
+  std::cout << "rawMid: " << rawMid << std::endl;
+  std::size_t mid = last % 2 == 0 ? arr[rawMid - 1] : arr[rawMid];
   return mid;
+}
+
+void printBottomAndTop(std::valarray<int> arr, int middle) {
+  std::cout << "bottom 50%: ";
+  for (std::size_t n = 0; n <= middle; n++)
+    std::cout << ' ' << arr[n];
+  std::cout << '\n';
+
+  std::cout << "top 50%: ";
+  for (std::size_t n = middle + 1; n < arr.size(); n++)
+    std::cout << ' ' << arr[n];
+  std::cout << '\n';
 }
 
 int main()
 {
-  std::valarray<int> foo = getArray(8);
-
+  std::valarray<int> foo = getArray(0, 8);
   int mid = getMid(foo);
-
   std::cout << "mid: " << mid << std::endl;
+  printBottomAndTop(foo, mid);
 
-  std::cout << "bottom 50%: ";
-  for (std::size_t n = 0; n <= mid; n++)
-    std::cout << ' ' << foo[n];
-  std::cout << '\n';
+  // create "bottom" valarray and show it's bottom/top
+  std::valarray<int> bottom = getArray(0, mid+1);
+  int bottomMid = getMid(bottom);
+  std::cout << "bottoMid: " << bottomMid << std::endl;
+  printBottomAndTop(bottom, bottomMid);
 
-  std::cout << "top 50%: ";
-  for (std::size_t n = mid + 1; n < foo.size(); n++)
-    std::cout << ' ' << foo[n];
-  std::cout << '\n';
-
-  // mid 2
-  std::valarray<int> bar = getArray(9);
-  int size2 = bar.size();
-
-  int rawMid2 = size2 / 2;
-  std::size_t mid2 = size2 % 2 == 0 ? bar[rawMid2 - 1] : bar[rawMid2];
-
-  std::cout << "size: " << size2 << " mid: " << mid2 << std::endl;
+  // create "top" valarray and show it's top/top
+  std::valarray<int> top = getArray(mid, foo.size());
+  int topMid = getMid(top);
+  std::cout << "topMid: " << topMid << std::endl;
+  printBottomAndTop(top, topMid);
 
   return 0;
 }
