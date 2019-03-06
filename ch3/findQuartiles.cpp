@@ -12,19 +12,20 @@ std::valarray<int> getArray(int n)
   return arr;
 }
 
+int getMid(std::valarray<int> arr) {
+  int size = arr.size();
+  int rawMid = size / 2;
+  std::size_t mid = size % 2 == 0 ? arr[rawMid - 1] : arr[rawMid];
+  return mid;
+}
+
 int main()
 {
-  // std::valarray<int> foo(8);
-  // for (int i = 0; i < 8; ++i)
-  //   foo[i] = i;
   std::valarray<int> foo = getArray(8);
 
-  int size = foo.size();
+  int mid = getMid(foo);
 
-  int rawMid = size / 2;
-  std::size_t mid = size % 2 == 0 ? foo[rawMid - 1] : foo[rawMid];
-
-  std::cout << "size: " << size << " mid: " << mid << std::endl;
+  std::cout << "mid: " << mid << std::endl;
 
   std::cout << "bottom 50%: ";
   for (std::size_t n = 0; n <= mid; n++)
@@ -32,7 +33,7 @@ int main()
   std::cout << '\n';
 
   std::cout << "top 50%: ";
-  for (std::size_t n = mid + 1; n < size; n++)
+  for (std::size_t n = mid + 1; n < foo.size(); n++)
     std::cout << ' ' << foo[n];
   std::cout << '\n';
 
