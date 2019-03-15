@@ -6,7 +6,10 @@
           "type": "shell",
           "command": "g++",
           "args": [
-            "-o", "${fileDirname}/${fileBasenameNoExtension}.out", "${file}"
+            // build a single file
+            // "-o", "${fileDirname}/${fileBasenameNoExtension}.out", "${file}", "-v"
+            // build dir, when header files are present
+            "-o", "${fileDirname}/${fileBasenameNoExtension}.out", "${fileDirname}/*.cpp"
           ],
           "group": {
               "kind": "build",
